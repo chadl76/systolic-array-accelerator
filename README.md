@@ -9,8 +9,15 @@ An int8 systolic array accelerator for neural-network matrix multiplication, ver
 ---
 
 ## Overview
-<!-- Your abstract goes here (trim to 3–5 sentences).
-     Answer: what problem, what you built, how you verified it, best numbers. -->
+Drones performing real-time vision must run neural networks whose workload is dominated
+by matrix multiplication, which is slow and power-hungry on a general-purpose processor.
+This project is a 4x4 systolic array accelerator that offloads that work: sixteen identical
+processing elements multiply two 4x4 matrices of 8-bit integers, each accumulating into a
+32-bit result. It was verified with a self-checking testbench against a NumPy golden model
+(16/16 outputs match), and implemented with the open-source LibreLane flow on SkyWater
+130 nm: a DRC- and LVS-clean layout of 10,570 standard cells that meets timing in every
+corner at 33 MHz and draws 5.9 mW.
+
 
 ## Why a systolic array?
 
