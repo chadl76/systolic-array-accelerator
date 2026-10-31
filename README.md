@@ -1,12 +1,9 @@
 # 4×4 Systolic Array AI Accelerator
 
-<!-- ONE-LINE PITCH: what it is + the headline proof. Example shape:
-     "An int8 matrix-multiply accelerator, verified against a NumPy golden model and taken
-      from RTL to a DRC/LVS-clean SkyWater 130 nm layout." -->
-_YOUR ONE-LINE PITCH HERE_
 
-<!-- THE MOST IMPORTANT THING ON THE PAGE: a picture.
-     Put your LibreLane layout screenshot (or the block diagram) in docs/ and link it. -->
+An int8 systolic array accelerator for neural-network matrix multiplication, verified against a NumPy golden model and taken from Verilog to a DRC/LVS-clean SkyWater 130 nm layout.
+
+
 ![Layout of the 4x4 array on Sky130](docs/layout.png)
 
 ---
@@ -16,8 +13,13 @@ _YOUR ONE-LINE PITCH HERE_
      Answer: what problem, what you built, how you verified it, best numbers. -->
 
 ## Why a systolic array?
-<!-- 2–3 sentences in your own words. Hint: what do a_out and b_out save?
-     (Data reuse: each number is read once and passed along instead of re-fetched.) -->
+
+**Data reuse.** Each number is read from memory once and passed along from PE to PE,
+instead of every PE reading it from memory itself. In a 4x4 array, that's 4x fewer
+memory reads for each input, and since memory reads cost far more energy than passing
+a value to a neighbor, it saves a lot of power. Imagine you're at a dinner table:
+someone passes the bowl down the table, instead of everyone walking to the kitchen
+to get the side dish.
 
 ## Architecture
 ![Top-level block diagram](docs/block_diagram.png)
